@@ -5,13 +5,14 @@ body {
     padding: 15px;
 }
 
+
 .bladeMenu {
-    width: 100%;
-    height: 100vh;
+    width: 100%; /* Minus the body padding */
+    height: 100vh; /* Responsive */
     overflow: hidden;
     z-index: 0;
     color: #fff;
-    background-color: rgba(255, 0, 255, 0.25);
+    background-color: rgba(255, 0, 255, 0.25); /* Mostly transparent, just so the boundaries are visible*/
     font-family: 'Verdana';
     font-weight: bold;
     display: grid;
@@ -21,39 +22,39 @@ body {
 }
 
 .bladeWrapper {
-    background-color: rgba(0, 255, 0, 0.5);
     height: 100%;
-    width: 100%;
-    overflow: hidden;
+    width: 100%; /* Dimensions relative to the parent grid cell */
+    overflow: hidden; /* So that the blade doesn't show when it slides out of the way*/
     display: inline-block;
     position: relative;
 }
 
 .blade {
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 0, 0, 1);
     width: 100%;
-    height: 100%;
+    height: 100%; /* Dimensions relative to wrapper div */
     position: absolute;
     top: 0; left: 0;
     display: inline-block;
-    z-index: 10;
+    z-index: 10; /* Placed on the very top so that it can slide away to reveal content underneath */
     transition: transform 0.3s ease-out;
-    transform-origin: left center;
-    transform: scaleX(1);
+    transform: translateX(0%); /* Starting translate position */
 }
 
 .blade.active {
-    transform-origin: left center;
-    transform: scaleX(0.05);
+    transform: translateX(-95%); /* Ending translate position; positive values slide right */
 }
 
 .content{
     height: 100%;
+    width: 100%;
     position: absolute;
     top: 0; left: 0;
-    z-index: 5;
+    z-index: 5; /* So that it's below the blade element, but above the background */
+    text-align: center;
 }
 
+/* Different colors just for distinction purposes */
 #artBlade{
     background-color: rgba(255, 255, 0, 0.5);
 }
