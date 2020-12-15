@@ -1,19 +1,10 @@
-let wrappers = document.getElementsByClassName("bladeWrapper");
+let wrappers = Array.from(document.getElementsByClassName("bladeWrapper"));
 
-let blades = document.getElementsByClassName("blade");
-
-for (let item of wrappers) {
-    item.addEventListener('click', toggleActive);
-}
-
-function toggleActive() {
-    for (let item of blades){
-        item.classList.remove('active');
-    }
-
-    let activate = this.querySelector('.blade');
-    activate.classList.add('active');
-
-    console.log(activate);
+let blades = Array.from(document.getElementsByClassName("blade"));
     
+function toggleActive(evt) {
+    blades.forEach(blade => blade.classList.remove("active"));
+    evt.target.classList.add("active");
 }
+
+wrappers.forEach(wrapper => wrapper.addEventListener('click', toggleActive));
